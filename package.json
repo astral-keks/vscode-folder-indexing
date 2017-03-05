@@ -1,0 +1,50 @@
+{
+    "name": "folder-index",
+    "displayName": "Folder Index",
+    "description": "Builds index of files to allow instant open",
+    "version": "0.0.1",
+    "publisher": "astral-keks",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "folderindex.rebuildindex",
+            "title": "Folder Index: Rebuild"
+        }],
+        "configuration": {
+            "title": "Folder indexing settings",
+            "properties": {
+                "folderindex.exclude": {
+                    "type": "array",
+                    "default": ["*\\bin\\*", "*\\obj\\*", "*\\.svn\\*", "*\\.git\\*"],
+                    "description": "Glob patterns to exclude from index"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "build": "npm run dependencies && npm run compile",
+        "dependencies": "npm install",
+        "compile": "tsc -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "dependencies": {
+        "wildcard2": "^0.0.2"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}

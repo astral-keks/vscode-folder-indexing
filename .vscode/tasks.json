@@ -1,0 +1,28 @@
+
+{
+    "version": "0.1.0",
+    
+    "tasks": [
+        {
+            "taskName": "build",
+            "command": "npm",
+            "isShellCommand": true,
+            "showOutput": "never",
+            "args": ["run", "build"]
+        },
+        {
+            "taskName": "compile",
+            "command": "npm",
+            "isShellCommand": true,
+            "showOutput": "always",
+            "args": ["run", "compile"]
+        },
+        {
+            "taskName": "dependencies",
+            "command": "npm",
+            "isShellCommand": true,
+            "showOutput": "always",
+            "args": ["run", "dependencies"]
+        }
+    ]
+}
