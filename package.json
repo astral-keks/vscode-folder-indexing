@@ -4,6 +4,10 @@
     "description": "Creates in-memory index of files in folder to allow opening them quickly",
     "version": "0.0.1",
     "publisher": "astral-keks",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/astral-keks/vscode-folder-indexing"
+    },
     "engines": {
         "vscode": "^1.5.0"
     },
