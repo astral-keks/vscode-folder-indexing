@@ -1,6 +1,6 @@
 # Folder Indexing for Visual Studio Code
 
-This extension creates in-memory index of files in opened folder and allows user to open them quickly via `workbench.action.showAllSymbols` (Go To Symbol In Workspace) command.
+This extension creates in-memory index of files in opened folder and allows user to open them quickly via `workbench.action.showAllSymbols (Go To Symbol In Workspace)` command.
 
 ## Features
 
