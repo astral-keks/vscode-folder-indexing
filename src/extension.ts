@@ -8,13 +8,13 @@ export function activate(context: vscode.ExtensionContext) {
     
     let status = new FolderIndexStatus()
     let index = new FolderIndex(vscode.workspace.rootPath, status)
-    let command = vscode.commands.registerCommand('folderindex.rebuildindex', () => { index.rebuild() })
+    let command = vscode.commands.registerCommand('folderindexing.rebuildindex', () => { index.rebuild() })
     
     context.subscriptions.push(status)
     context.subscriptions.push(index)
     context.subscriptions.push(command)
     
-    vscode.commands.executeCommand('folderindex.rebuildindex')
+    vscode.commands.executeCommand('folderindexing.rebuildindex')
 }
 
 export function deactivate() {

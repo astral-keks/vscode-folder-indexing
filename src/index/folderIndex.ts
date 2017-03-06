@@ -20,7 +20,7 @@ export default class FolderIndex implements vscode.WorkspaceSymbolProvider, vsco
     constructor(folder: string, status: FolderIndexStatus) {
         this.folder = folder
         this.status = status
-        this.exclude = vscode.workspace.getConfiguration("folderindex").get<string[]>("exclude")
+        this.exclude = vscode.workspace.getConfiguration("folderindexing").get<string[]>("exclude")
         this.symbolProvider = vscode.languages.registerWorkspaceSymbolProvider(this)
         this.handler = new FolderIndexHandler(this)
         this.entries = {}

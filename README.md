@@ -9,8 +9,8 @@ This extension creates in-memory index of files in opened folder and allows user
 
 ## Settings
 
-* `folderindex.exclude` : glob patterns to exclude from index
+* `folderindexing.exclude` : glob patterns to exclude from index
 
 ## Commands
 
-* `folderindex.rebuildindex` : rebuild index (e.g. if something's wrong)
+* `folderindexing.rebuildindex (Folder Indexing: Rebuild)` : rebuild index (e.g. if something's wrong)

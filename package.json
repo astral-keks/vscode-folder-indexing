@@ -1,7 +1,7 @@
 {
-    "name": "folder-index",
-    "displayName": "Folder Index",
-    "description": "Builds index of files to allow instant open",
+    "name": "folder-indexing",
+    "displayName": "Folder Indexing",
+    "description": "Creates in-memory index of files in folder to allow opening them quickly",
     "version": "0.0.1",
     "publisher": "astral-keks",
     "engines": {
@@ -16,16 +16,16 @@
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "folderindex.rebuildindex",
-            "title": "Folder Index: Rebuild"
+            "command": "folderindexing.rebuildindex",
+            "title": "Folder Indexing: Rebuild"
         }],
         "configuration": {
-            "title": "Folder indexing settings",
+            "title": "Folder Indexing settings",
             "properties": {
-                "folderindex.exclude": {
+                "folderindexing.exclude": {
                     "type": "array",
-                    "default": ["*\\bin\\*", "*\\obj\\*", "*\\.svn\\*", "*\\.git\\*"],
-                    "description": "Glob patterns to exclude from index"
+                    "default": ["*\\bin\\*", "*\\obj\\*", "*\\.svn\\*", "*\\.git\\*", "*\\packages\\*"],
+                    "description": "Glob patterns to exclude from folder index"
                 }
             }
         }
