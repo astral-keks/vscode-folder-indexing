@@ -1,10 +1,14 @@
 'use strict'
+
 import * as vscode from 'vscode'
 
-export default class FolderIndexStatus implements vscode.Disposable {
+import {IndexStorageEvents} from './indexing/indexStorageEvents'
+
+export class ExtensionStatus extends IndexStorageEvents {
     private statusBarItem: vscode.StatusBarItem
 
     constructor() {
+        super()
         this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0)
     }
 
@@ -12,15 +16,15 @@ export default class FolderIndexStatus implements vscode.Disposable {
         this.statusBarItem.dispose()
     }
 
-    public beginBuild() {
+    public onBeginRebuild() {
         this.statusBarItem.show()
     }
 
-    public notifyBuild(path: string) {
-        this.statusBarItem.text = 'Building index: ' + path
+    public onRebuild(path: string) {
+        this.statusBarItem.text = 'Indexing: ' + path
     }
 
-    public endBuild() {
+    public onEndRebuild() {
         this.statusBarItem.hide()
     }
 }
