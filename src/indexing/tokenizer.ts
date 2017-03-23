@@ -20,7 +20,7 @@ export class Tokenizer {
         return this.trim(path
             .replace(this.upperCaseReplaceRegex, "|$1")
             .replace(this.separatorsReplaceRegex, "|")
-            .replace("|", "")
+            .replace(/\|/g, "")
             .toLowerCase())
     }
 
