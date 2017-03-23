@@ -2,7 +2,7 @@
     "name": "folder-indexing",
     "displayName": "Folder Indexing",
     "description": "Creates in-memory index of files in folder to allow opening them quickly",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "astral-keks",
     "license": "MIT",
     "repository": {
