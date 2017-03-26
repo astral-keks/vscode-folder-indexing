@@ -15,12 +15,13 @@ export function activate(context: vscode.ExtensionContext) {
     let settings = new ExtensionSettings()
     let fileSystem = new FileSystem()
     let index = new IndexStorage(vscode.workspace.rootPath, fileSystem, settings, status)
+    vscode.languages.registerWorkspaceSymbolProvider(index)
     context.subscriptions.push(index)
 
     let commands = new ExtensionCommands(settings)
     let command = vscode.commands.registerCommand(commands.rebuild, () => { index.rebuild() })
     context.subscriptions.push(command)
-    
+
     vscode.commands.executeCommand(commands.rebuild)
 }
 

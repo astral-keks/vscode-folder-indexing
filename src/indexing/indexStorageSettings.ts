@@ -13,4 +13,8 @@ export class IndexStorageSettings {
     public get searchFullPath(): boolean {
         return false
     }
+
+    public get languageExceptions(): string[] {
+        return []
+    }
 }

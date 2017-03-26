@@ -22,6 +22,10 @@ export class ExtensionSettings extends IndexStorageSettings {
         return this.configuration.get<string>("searchMode") == "fullpath"
     }
 
+    public get languageExceptions(): string[] {
+        return this.configuration.get<string[]>("searchDisablingLanguages")
+    }
+
     private get configuration(): vscode.WorkspaceConfiguration {
         return vscode.workspace.getConfiguration(this.extensionIdentifier)
     }

@@ -1,6 +1,10 @@
 
 # Release Notes
 
+## 0.2.0
+### Added
+- Support disabling search for specific languages
+
 ## 0.1.1
 ### Fixed
 - Some queries with capital characters return incorrect result

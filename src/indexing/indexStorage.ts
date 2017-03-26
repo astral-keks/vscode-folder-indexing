@@ -20,7 +20,6 @@ export class IndexStorage implements vscode.WorkspaceSymbolProvider, vscode.Disp
     private events: IndexStorageEvents
 
     private entries: Map<string, IndexStorageEntry>
-    private symbolProvider: vscode.Disposable
     private tokenizer: Tokenizer
 
     private rebuilding: boolean
@@ -35,7 +34,6 @@ export class IndexStorage implements vscode.WorkspaceSymbolProvider, vscode.Disp
         this.fileSystem.onDelete(path => this.removeEntries(path))
 
         this.entries = new Map<string, IndexStorageEntry>()
-        this.symbolProvider = vscode.languages.registerWorkspaceSymbolProvider(this)
         this.tokenizer = new Tokenizer()
 
         this.rebuilding = false
@@ -43,8 +41,9 @@ export class IndexStorage implements vscode.WorkspaceSymbolProvider, vscode.Disp
 
     public provideWorkspaceSymbols(queryString: string, token: vscode.CancellationToken = null): vscode.SymbolInformation[] {
         let result = new QueryResult(this.settings.searchResultMaxSize)
+        let language = this.getCurrentLanguage()
 
-        if (queryString != null && queryString.length > 0) {
+        if (queryString != null && queryString.length > 0 && (language == null || this.settings.languageExceptions.indexOf(language) < 0)) {
             try {
                 queryString = this.tokenizer.getJointTokens(queryString)
                 let query = new Query(queryString, this.settings.searchFullPath)
@@ -66,11 +65,9 @@ export class IndexStorage implements vscode.WorkspaceSymbolProvider, vscode.Disp
         try {
             this.entries.clear()
             this.fileSystem.dispose()
-            this.symbolProvider.dispose()
         } catch (error) {
             console.log("Error while disposing index\n" + error)
         }
-        
     }
 
     public async rebuild() {
@@ -146,8 +143,17 @@ export class IndexStorage implements vscode.WorkspaceSymbolProvider, vscode.Disp
         this.entries.delete(key)
     }
 
-    private isExcludedPath(path: string) : boolean {
+    private isExcludedPath(path: string): boolean {
         return this.settings.excludePatterns.some(e => wildcard(path, e))
     }
 
+    private getCurrentLanguage(): string {
+        let activeDocument = vscode.window.activeTextEditor 
+            ? vscode.window.activeTextEditor.document
+            : null
+        let language = activeDocument
+            ? activeDocument.languageId
+            : null
+        return language
+    }
 }

@@ -35,13 +35,18 @@
                 "folder-indexing.searchResultMaxSize": {
                     "type": "number",
                     "default": 500,
-                    "description": "Maximal count of lines to show in dropdown"
+                    "description": "Maximal count of lines to show in symbol search dropdown"
                 },
                 "folder-indexing.searchMode": {
                     "type": "string",
                     "default": "filename",
                     "enum": ["filename", "fullpath"],
-                    "description": "Possible values: filename - find symbol matches in filename. fullpath - find symbol matches in full path (slower and less stable)"
+                    "description": "Sets target which index search is performed on. Possible values: filename - find symbol matches in filename. fullpath - find symbol matches in full path (slower and less stable)"
+                },
+                "folder-indexing.searchDisablingLanguages": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Active text editor language ids for which index search should be disabled"
                 }
             }
         }
